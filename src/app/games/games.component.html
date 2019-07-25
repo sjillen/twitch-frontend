@@ -1,0 +1,31 @@
+<h2>Games tracked</h2>
+
+<div>
+  <label
+    >Game Name:
+    <input #gameName />
+  </label>
+  <label
+    >Game Twitch ID:
+    <input #gameTwitchId />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button
+    (click)="
+      add(gameName.value, gameTwitchId.value);
+      gameName.value = '';
+      gameTwitchId.value = ''
+    "
+  >
+    add
+  </button>
+</div>
+
+<ul class="games">
+  <li *ngFor="let game of games">
+    <a routerLink="/detail/{{ game.twitchId }}">
+      <span class="badge">{{ game.twitchId }}</span> {{ game.name }}
+    </a>
+    <button class="delete" title="delete game" (click)="delete(game)">x</button>
+  </li>
+</ul>
