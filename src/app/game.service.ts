@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { of, Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 import { Game } from './game';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  private gamesUrl = 'http://localhost:5000/games';
+  private gamesUrl = `${environment.baseUrl}/games`;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
