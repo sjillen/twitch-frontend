@@ -1,16 +1,18 @@
 <h2>Games tracked</h2>
 
 <div>
-  <label
-    >Game Name:
-    <input #gameName />
-  </label>
-  <label
-    >Game Twitch ID:
-    <input #gameTwitchId />
-  </label>
+  <mat-form-field>
+    <input matInput placeholder="Game Name" value="" #gameName />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Game Twitch ID" value="" #gameTwitchId />
+  </mat-form-field>
+
   <!-- (click) passes input value to add() and then clears the input -->
   <button
+    mat-mini-fab
+    color="primary"
     (click)="
       add(gameName.value, gameTwitchId.value);
       gameName.value = '';
