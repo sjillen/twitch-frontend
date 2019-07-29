@@ -1,11 +1,11 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>{{ title }}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/games">Games</a>
+<nav class="blue">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Twitch Viewer Tracker</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="sass.html">Dashboard</a></li>
+      <li><a href="badges.html">Games</a></li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

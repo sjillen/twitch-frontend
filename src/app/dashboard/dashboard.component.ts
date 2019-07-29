@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../game';
+import { Game } from '../models/game';
 import { GameService } from '../game.service';
 
 @Component({
@@ -18,5 +18,11 @@ export class DashboardComponent implements OnInit {
 
   getGames(): void {
     this.gameService.getGames().subscribe(games => (this.games = games));
+  }
+
+  setArtSize(boxArtUrl, width = 600, height = 800) {
+    return (boxArtUrl = boxArtUrl
+      .replace('{width}', width.toString())
+      .replace('{height}', height.toString()));
   }
 }

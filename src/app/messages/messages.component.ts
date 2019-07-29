@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-messages',
@@ -8,14 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit {
-  constructor(
-    public messageService: MessageService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(public messageService: MessageService) {}
 
   ngOnInit() {}
-
-  openSnackBar(message: string) {
-    this.snackBar.open(message, 'close');
-  }
 }

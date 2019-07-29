@@ -1,21 +1,20 @@
-<h2>Tracked Games</h2>
-<div class="main-container">
-  <div class="card-container">
-    <a *ngFor="let game of games" routerLink="/detail/{{ game.twitchId }}">
-      <mat-card class="example-card">
-        <img
-          mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          alt="Photo of a Shiba Inu"
-        />
-        <mat-card-header>
-          <mat-card-subtitle>{{ game.name }}</mat-card-subtitle>
-        </mat-card-header>
-      </mat-card>
-    </a>
+<div class="main-container container">
+  <h2 class="center-align">Tracked Games</h2>
+  <div class="row">
+    <div *ngFor="let game of games" class="col s12 m6 l4">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img class="responsive-img" src="{{ setArtSize(game.boxArtUrl) }}" />
+        </div>
+        <app-snapshot [gameId]="game.twitchId"> </app-snapshot>
+        <div class="card-action">
+          <a href="#">{{ game.name }}</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="chart-container">
+  <div class="chart-container col-sm-2">
     <app-line-chart></app-line-chart>
   </div>
 </div>

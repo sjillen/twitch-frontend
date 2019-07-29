@@ -4,7 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { of, Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import { Game } from './game';
+import { Game } from './models/game';
 
 @Injectable({
   providedIn: 'root',
