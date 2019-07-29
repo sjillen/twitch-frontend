@@ -1,0 +1,26 @@
+<div class="card-content row valign-wrapper">
+  <span class="col s6">
+    <img class="responsive-img" src="assets/img/twitch-official.svg" alt="" />
+  </span>
+  <div
+    *ngIf="!latestSnapshots || !latestSnapshots.length; else display_viewers"
+    class="col s6"
+  >
+    <div class="spinner-layer spinner-green">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  <ng-template #display_viewers
+    ><h5 class="blue-text center-align col s6">
+      {{ getLatestGameSnapshot().viewers }} viewers
+    </h5></ng-template
+  >
+</div>
