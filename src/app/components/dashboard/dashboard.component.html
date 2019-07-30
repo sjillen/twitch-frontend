@@ -1,6 +1,7 @@
-<div class="main-container container">
-  <h2 class="center-align">Tracked Games</h2>
-  <div class="row">
+<div class="main-container container" id="games">
+  <div class="row games-container">
+    <h2 class="center-align">Tracked Games</h2>
+
     <div *ngFor="let game of games" class="col s12 m6 l4">
       <div class="card hoverable">
         <div class="card-image">
@@ -14,7 +15,7 @@
     </div>
   </div>
   <hr />
-  <div class="chart-container row">
+  <div id="chart" class="chart-container row">
     <app-chart [games]="games" class="col s12"></app-chart>
   </div>
 </div>

@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Twitch Viewers Tracker';
+
+  scrollToElement($target): void {
+    const $element = document.querySelector($target);
+    $element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }
 }
