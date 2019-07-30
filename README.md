@@ -1,10 +1,13 @@
 # Client
 
+This is the frontend server of the Twitch tracker project.
+The corresponding [BackEnd](https://github.com/ThomasProust/twitch-backend.git) of the application is needed for this to be able to run.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
 ## Prerequisites
 
-In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [backend](http://github.com/ThomasProust/backend,git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
+In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [BackEnd](http://github.com/ThomasProust/twitch-backend,git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
 
 ## Development server
 
