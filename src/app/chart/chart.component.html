@@ -1,5 +1,12 @@
 <h2 class="center-align blue-text">Twitch viewers Chart</h2>
-<div class="svg-container" *ngIf="multi && multi.length; else spinner">
+<div class="switch">
+  <label>
+    <input (click)="switchDisplay()" type="checkbox" />
+    <span class="lever"></span>
+    only real time
+  </label>
+</div>
+<div class="svg-container" *ngIf="multi && multi; else spinner">
   <ngx-charts-line-chart
     [view]=""
     [scheme]="colorScheme"

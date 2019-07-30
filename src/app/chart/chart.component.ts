@@ -16,7 +16,7 @@ export class ChartComponent implements OnInit {
   data: ChartData[] = [];
   history: ChartData[] = [];
   loading = false;
-  realTime = true;
+  isRealTime = false;
 
   title = 'Twitch Viewers Count';
   ticks;
@@ -46,7 +46,6 @@ export class ChartComponent implements OnInit {
 
   @Input() games: Game[];
 
-  // pie
   constructor(private snapshotService: SnapshotService) {}
 
   ngOnInit() {
@@ -96,18 +95,19 @@ export class ChartComponent implements OnInit {
   getLatestSnapshots() {
     this.snapshotService.snapshots.subscribe(snapshots => {
       this.formatSnapshots(snapshots).subscribe(result => {
+        const formatResult = this.updateChartDataNames(result);
         if (!this.multi || !this.multi.length) {
-          this.multi = result;
+          this.multi = formatResult;
         } else {
-          this.updateSnapshots(this.multi, result);
+          this.multi = this.updateSnapshots(this.multi, formatResult);
         }
-        this.updateChartDataNames(this.multi);
+        this.multi = this.updateChartDataNames(this.multi);
         this.multi = [...this.multi];
       });
     });
   }
 
-  updateSnapshots(currents: ChartData[], latests: ChartData[]): void {
+  updateSnapshots(currents: ChartData[], latests: ChartData[]): ChartData[] {
     for (let i = 0; i < currents.length; i++) {
       for (const latest of latests) {
         if (currents[i].name === latest.name) {
@@ -115,11 +115,11 @@ export class ChartComponent implements OnInit {
         }
       }
     }
+    return currents;
   }
 
   updateChartDataNames(chartDatas: ChartData[]): ChartData[] {
-    chartDatas.forEach(charData => this.updateChartDataName(charData));
-    return chartDatas;
+    return chartDatas.map(charData => this.updateChartDataName(charData));
   }
 
   updateChartDataName(chartData: ChartData) {
@@ -127,6 +127,17 @@ export class ChartComponent implements OnInit {
       if (game.twitchId === chartData.name) {
         chartData.name = game.name;
       }
+    }
+    return chartData;
+  }
+
+  switchDisplay() {
+    if (this.isRealTime) {
+      this.fetchSnapshots();
+      this.isRealTime = false;
+    } else {
+      this.multi = [];
+      this.isRealTime = true;
     }
   }
 }
