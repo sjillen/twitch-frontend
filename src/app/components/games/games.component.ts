@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Game } from '../../models/game';
 
@@ -8,16 +8,11 @@ import { Game } from '../../models/game';
   styleUrls: ['./games.component.scss'],
 })
 export class GamesComponent implements OnInit {
-  games: Game[] = [];
+  @Input() games: Game[];
+
   constructor(private gameService: GameService) {}
 
-  ngOnInit() {
-    this.getGames();
-  }
-
-  getGames(): void {
-    this.gameService.getGames().subscribe(games => (this.games = games));
-  }
+  ngOnInit() {}
 
   add(name: string, twitchId: number): void {
     name = name.trim();

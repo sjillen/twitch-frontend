@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SnapshotComponent } from './components/snapshot/snapshot.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { environment } from '../environments/environment';
+import { GameComponent } from './components/game/game.component';
 
 const config: SocketIoConfig = { url: environment.baseUrl, options: {} };
 
@@ -27,6 +28,7 @@ const config: SocketIoConfig = { url: environment.baseUrl, options: {} };
     DashboardComponent,
     SnapshotComponent,
     ChartComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div class="card hoverable">
+  <div class="card-image">
+    <img class="responsive-img" src="{{ setArtSize(game.boxArtUrl) }}" />
+  </div>
+  <app-snapshot [gameId]="game.twitchId"> </app-snapshot>
+  <div class="card-action">
+    <a href="#">{{ game.name }}</a>
+  </div>
+</div>

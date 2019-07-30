@@ -19,10 +19,4 @@ export class DashboardComponent implements OnInit {
   getGames(): void {
     this.gameService.getGames().subscribe(games => (this.games = games));
   }
-
-  setArtSize(boxArtUrl, width = 600, height = 800) {
-    return (boxArtUrl = boxArtUrl
-      .replace('{width}', width.toString())
-      .replace('{height}', height.toString()));
-  }
 }
