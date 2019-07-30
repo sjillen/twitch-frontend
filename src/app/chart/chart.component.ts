@@ -4,7 +4,8 @@ import { groupBy, mergeMap, toArray, map } from 'rxjs/operators';
 import { SnapshotService } from '../snapshot.service';
 import { Snapshot } from '../models/snapshot';
 import { Game } from '../models/game';
-import { ChartData } from '../chartData';
+import { ChartData } from '../models/chartData';
+import { ChartService } from '../chart.service';
 import * as shape from 'd3-shape';
 
 @Component({
@@ -46,7 +47,10 @@ export class ChartComponent implements OnInit {
 
   @Input() games: Game[];
 
-  constructor(private snapshotService: SnapshotService) {}
+  constructor(
+    private snapshotService: SnapshotService,
+    private chartService: ChartService
+  ) {}
 
   ngOnInit() {
     this.fetchSnapshots();
@@ -67,68 +71,34 @@ export class ChartComponent implements OnInit {
 
   fetchSnapshots() {
     this.snapshotService.getSnapshots().subscribe(snapshots => {
-      this.formatSnapshots(snapshots).subscribe(result => {
-        this.multi = this.updateChartDataNames(result);
+      this.chartService.formatSnapshots(snapshots).subscribe(result => {
+        this.multi = this.chartService.updateChartDataNames(result, this.games);
       });
     });
-  }
-
-  formatSnapshots(snapshots: Snapshot[]): Observable<any[]> {
-    return from(snapshots).pipe(
-      groupBy(
-        snap => snap.gameId,
-        s => {
-          return { name: s.timestamp, value: s.viewers };
-        }
-      ),
-      mergeMap(group => zip(of(group.key), group.pipe(toArray()))),
-      map(row => {
-        return Object.assign(new ChartData(), {
-          name: row[0],
-          series: row[1],
-        });
-      }),
-      toArray()
-    );
   }
 
   getLatestSnapshots() {
     this.snapshotService.snapshots.subscribe(snapshots => {
-      this.formatSnapshots(snapshots).subscribe(result => {
-        const formatResult = this.updateChartDataNames(result);
+      this.chartService.formatSnapshots(snapshots).subscribe(result => {
+        const formatResult = this.chartService.updateChartDataNames(
+          result,
+          this.games
+        );
         if (!this.multi || !this.multi.length) {
           this.multi = formatResult;
         } else {
-          this.multi = this.updateSnapshots(this.multi, formatResult);
+          this.multi = this.chartService.updateSnapshots(
+            this.multi,
+            formatResult
+          );
         }
-        this.multi = this.updateChartDataNames(this.multi);
+        this.multi = this.chartService.updateChartDataNames(
+          this.multi,
+          this.games
+        );
         this.multi = [...this.multi];
       });
     });
-  }
-
-  updateSnapshots(currents: ChartData[], latests: ChartData[]): ChartData[] {
-    for (let i = 0; i < currents.length; i++) {
-      for (const latest of latests) {
-        if (currents[i].name === latest.name) {
-          currents[i].series.push(latest.series[0]);
-        }
-      }
-    }
-    return currents;
-  }
-
-  updateChartDataNames(chartDatas: ChartData[]): ChartData[] {
-    return chartDatas.map(charData => this.updateChartDataName(charData));
-  }
-
-  updateChartDataName(chartData: ChartData) {
-    for (const game of this.games) {
-      if (game.twitchId === chartData.name) {
-        chartData.name = game.name;
-      }
-    }
-    return chartData;
   }
 
   switchDisplay() {

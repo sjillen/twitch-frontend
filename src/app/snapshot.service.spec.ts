@@ -5,7 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SnapshotService } from './snapshot.service';
 import { SocketIoModule } from 'ngx-socket-io';
 
-describe('SnapshotService', () => {
+xdescribe('SnapshotService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
