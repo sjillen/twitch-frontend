@@ -13,7 +13,7 @@ import * as shape from 'd3-shape';
 export class ChartComponent implements OnInit {
   data: ChartData[] = [];
   history: ChartData[] = [];
-  isRealTime = false;
+  isRealTime = true;
 
   title = 'Twitch Viewers Count';
   ticks;
@@ -49,7 +49,6 @@ export class ChartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchSnapshots();
     this.getLatestSnapshots();
   }
 

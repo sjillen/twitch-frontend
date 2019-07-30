@@ -1,8 +1,12 @@
-.main-container {
+.main-container,
+.games-container {
   height: 100vh;
 }
 
+.games-container {
+  height: 90vh;
+}
+
 .chart-container {
-  height: 80vh;
-  margin-top: 10vh;
+  height: 90vh;
 }

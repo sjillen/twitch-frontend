@@ -1,10 +1,11 @@
-<div class="main-container container" id="games">
-  <div class="row games-container">
+<div class="main-container container">
+  <div class="row games-container" id="games">
     <h2 class="center-align">Tracked Games</h2>
 
     <app-games [games]="games"></app-games>
   </div>
   <hr />
+
   <div id="chart" class="chart-container row">
     <app-chart [games]="games" class="col s12"></app-chart>
   </div>

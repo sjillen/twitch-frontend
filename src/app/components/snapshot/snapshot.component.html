@@ -2,25 +2,26 @@
   <span class="col s6">
     <img class="responsive-img" src="assets/img/twitch-official.svg" alt="" />
   </span>
-  <div
-    *ngIf="!latestSnapshots || !latestSnapshots.length; else display_viewers"
-    class="col s6"
-  >
-    <div class="spinner-layer spinner-green">
-      <div class="circle-clipper left">
-        <div class="circle"></div>
-      </div>
-      <div class="gap-patch">
-        <div class="circle"></div>
-      </div>
-      <div class="circle-clipper right">
-        <div class="circle"></div>
+  <div *ngIf="latestSnapshots; else loading" class="col s6">
+    <h5 class="blue-text center-align">
+      {{ getLatestGameSnapshot().viewers }} viewers
+    </h5>
+  </div>
+  <ng-template #loading>
+    <div class="col s6 center-align">
+      <div class="preloader-wrapper small active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <ng-template #display_viewers
-    ><h5 class="blue-text center-align col s6">
-      {{ getLatestGameSnapshot().viewers }} viewers
-    </h5></ng-template
-  >
+  </ng-template>
 </div>
