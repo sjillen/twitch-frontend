@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { of, Observable } from 'rxjs';
-import { environment } from '../environments/environment';
-import { Game } from './models/game';
+import { environment } from '../../environments/environment';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { SnapshotService } from '../snapshot.service';
-import { Snapshot } from '../models/snapshot';
+import { SnapshotService } from '../../services/snapshot.service';
+import { Snapshot } from '../../models/snapshot';
 
 @Component({
   selector: 'app-snapshot',

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SnapshotService } from '../snapshot.service';
-import { Game } from '../models/game';
-import { ChartData } from '../models/chartData';
-import { ChartService } from '../chart.service';
+import { SnapshotService } from '../../services/snapshot.service';
+import { Game } from '../../models/game';
+import { ChartData } from '../../models/chartData';
+import { ChartService } from '../../services/chart.service';
 import * as shape from 'd3-shape';
 
 @Component({

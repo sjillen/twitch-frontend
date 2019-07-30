@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ChartService } from './chart.service';
-import { Snapshot } from './models/snapshot';
-import { ChartData } from './models/chartData';
-import { Game } from './models/game';
+import { Snapshot } from '../models/snapshot';
+import { ChartData } from '../models/chartData';
+import { Game } from '../models/game';
 
 describe('ChartService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

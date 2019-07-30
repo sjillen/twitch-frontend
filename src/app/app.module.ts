@@ -9,20 +9,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { AppComponent } from './app.component';
-import { GameComponent } from './game/game.component';
-import { GamesComponent } from './games/games.component';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { GamesComponent } from './components/games/games.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SnapshotComponent } from './snapshot/snapshot.component';
-import { ChartComponent } from './chart/chart.component';
+import { SnapshotComponent } from './components/snapshot/snapshot.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameComponent,
     GamesComponent,
     MessagesComponent,
     DashboardComponent,

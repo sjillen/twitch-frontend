@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SnapshotComponent } from './snapshot.component';
-import { SnapshotService } from '../snapshot.service';
+import { SnapshotService } from '../../services/snapshot.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { of, Observable } from 'rxjs';

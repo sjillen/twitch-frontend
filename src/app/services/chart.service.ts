@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { from, of, zip, Observable } from 'rxjs';
 import { groupBy, mergeMap, toArray, map } from 'rxjs/operators';
-import { ChartData } from './models/chartData';
-import { Game } from './models/game';
-import { Snapshot } from './models/snapshot';
+import { ChartData } from '../models/chartData';
+import { Game } from '../models/game';
+import { Snapshot } from '../models/snapshot';
 
 @Injectable({
   providedIn: 'root',
@@ -31,9 +31,9 @@ export class ChartService {
   }
 
   updateSnapshots(currents: ChartData[], latests: ChartData[]): ChartData[] {
-    for (let i = 0; i < currents.length; i++) {
+    for (const [i, current] of currents.entries()) {
       for (const latest of latests) {
-        if (currents[i].name === latest.name) {
+        if (current.name === latest.name) {
           currents[i].series.push(latest.series[0]);
         }
       }

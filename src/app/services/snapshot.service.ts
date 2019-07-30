@@ -4,8 +4,8 @@ import { Socket } from 'ngx-socket-io';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { of, Observable } from 'rxjs';
-import { environment } from '../environments/environment';
-import { Snapshot } from './models/snapshot';
+import { environment } from '../../environments/environment';
+import { Snapshot } from '../models/snapshot';
 
 @Injectable({
   providedIn: 'root',
