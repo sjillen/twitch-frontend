@@ -2,13 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
+## Prerequisites
+
+In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [backend](http://github.com/ThomasProust/backend,git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
