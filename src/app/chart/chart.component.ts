@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { from, of, zip, Observable } from 'rxjs';
-import { groupBy, mergeMap, toArray, map } from 'rxjs/operators';
 import { SnapshotService } from '../snapshot.service';
-import { Snapshot } from '../models/snapshot';
 import { Game } from '../models/game';
 import { ChartData } from '../models/chartData';
 import { ChartService } from '../chart.service';
@@ -16,7 +13,6 @@ import * as shape from 'd3-shape';
 export class ChartComponent implements OnInit {
   data: ChartData[] = [];
   history: ChartData[] = [];
-  loading = false;
   isRealTime = false;
 
   title = 'Twitch Viewers Count';
@@ -42,7 +38,7 @@ export class ChartComponent implements OnInit {
   trimXAxisTicks = false;
 
   colorScheme = {
-    domain: ['#9370DB', '#87CEFA', '#FA8072', '#FF7F50', '#90EE90', '#9370DB'],
+    domain: ['#9370DB', '#87CEFA', '#FA8072'],
   };
 
   @Input() games: Game[];
@@ -57,15 +53,13 @@ export class ChartComponent implements OnInit {
     this.getLatestSnapshots();
   }
 
-  private axisFormat(val) {
-    if (
-      this.ticks[0] === val ||
-      this.ticks[this.ticks.length - 1] === val ||
-      this.ticks[(this.ticks.length - 1) / 2] === val
-    ) {
-      return new Date(val).toLocaleString('en-GB', { timeZone: 'UTC' });
+  switchDisplay() {
+    if (this.isRealTime) {
+      this.fetchSnapshots();
+      this.isRealTime = false;
     } else {
-      return '';
+      this.multi = [];
+      this.isRealTime = true;
     }
   }
 
@@ -84,30 +78,30 @@ export class ChartComponent implements OnInit {
           result,
           this.games
         );
-        if (!this.multi || !this.multi.length) {
-          this.multi = formatResult;
-        } else {
-          this.multi = this.chartService.updateSnapshots(
-            this.multi,
-            formatResult
-          );
-        }
-        this.multi = this.chartService.updateChartDataNames(
-          this.multi,
-          this.games
-        );
-        this.multi = [...this.multi];
+        this.reassignData(formatResult);
       });
     });
   }
 
-  switchDisplay() {
-    if (this.isRealTime) {
-      this.fetchSnapshots();
-      this.isRealTime = false;
+  private reassignData(incomingData: ChartData[]) {
+    if (!this.multi || !this.multi.length) {
+      this.multi = incomingData;
     } else {
-      this.multi = [];
-      this.isRealTime = true;
+      this.multi = this.chartService.updateSnapshots(this.multi, incomingData);
+    }
+    this.multi = this.chartService.updateChartDataNames(this.multi, this.games);
+    this.multi = [...this.multi];
+  }
+
+  private axisFormat(val) {
+    if (
+      this.ticks[0] === val ||
+      this.ticks[this.ticks.length - 1] === val ||
+      this.ticks[(this.ticks.length - 1) / 2] === val
+    ) {
+      return new Date(val).toLocaleString('en-GB', { timeZone: 'UTC' });
+    } else {
+      return '';
     }
   }
 }
