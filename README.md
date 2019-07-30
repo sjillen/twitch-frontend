@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Prerequisites
 
-In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [BackEnd](http://github.com/ThomasProust/twitch-backend,git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
+In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [BackEnd](http://github.com/ThomasProust/twitch-backend.git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
 
 ## Development server
 
