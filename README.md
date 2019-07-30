@@ -5,9 +5,18 @@ The corresponding [BackEnd](https://github.com/ThomasProust/twitch-backend.git) 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
-## Prerequisites
+## Prerequisites and Setup
 
-In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [BackEnd](http://github.com/ThomasProust/twitch-backend.git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
+In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [BackEnd](http://github.com/ThomasProust/twitch-backend.git). Also verify that [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
+
+Finally make sure that your [BackEnd](https://github.com/ThomasProust/twitch-backend.git) setup is totally done, including seeding the required data in to the database.
+If you haven't already, you can use following curl commands:
+
+```sh
+curl -X POST http://localhost:5000/games -H "Content-Type: application/json" -d '{"name": "Far Cry 5"}'
+curl -X POST http://localhost:5000/games -H "Content-Type: application/json" -d '{"name": "Assassin\s creed odyssey"}'
+curl -X POST http://localhost:5000/games -H "Content-Type: application/json" -d '{"name": "Tom Clancy's Rainbow Six Siege"}'
+```
 
 ## Development server
 
