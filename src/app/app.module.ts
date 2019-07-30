@@ -15,8 +15,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SnapshotComponent } from './components/snapshot/snapshot.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { environment } from '../environments/environment';
 
-const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
+const config: SocketIoConfig = { url: environment.baseUrl, options: {} };
 
 @NgModule({
   declarations: [
