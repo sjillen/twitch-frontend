@@ -20,6 +20,8 @@ curl -X POST http://localhost:5000/games -H "Content-Type: application/json" -d 
 
 In order to to fetch the required data, you first need to modify the `baseUrl` in you environment files `src/environments` to match the one of the [Backend](http://github.com/ThomasProust/twitch-backend.git). Also make sure [Angular CLI](https://github.com/angular/angular-cli) is installed on your machine in order to run the commands hereafter.
 
+Install the application's dependencies by running `npm install`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
