@@ -1,9 +1,9 @@
-class Serie {
+interface Serie {
   name: Date;
   value: number;
 }
 
-export class ChartData {
+export interface ChartData {
   name: number | string;
   series: Serie[];
 }

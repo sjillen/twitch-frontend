@@ -1,4 +1,4 @@
-export class Game {
+export interface Game {
   twitchId: number;
   name: string;
   boxArtUrl: string;

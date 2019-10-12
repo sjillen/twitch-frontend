@@ -21,10 +21,10 @@ export class ChartService {
       ),
       mergeMap(group => zip(of(group.key), group.pipe(toArray()))),
       map(row => {
-        return Object.assign(new ChartData(), {
+        return {
           name: row[0],
           series: row[1],
-        });
+        };
       }),
       toArray()
     );
